@@ -31,7 +31,7 @@ select {
   max-width: 600px;
   margin: 60px auto;
 }
-.cities {
+.city {
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
