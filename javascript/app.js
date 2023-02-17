@@ -1,42 +1,48 @@
 function updateTime() {
-  let atlantaElement = document.querySelector("#atlanta");
-  let atlantaDateElement = atlantaElement.querySelector(".date");
-  let atlantaTimeElement = atlantaElement.querySelector(".time");
-
-  let atlantaTime = moment().tz("EST");
-
-  atlantaDateElement.innerHTML = atlantaTime.format("MMMM Do YYYY");
-  atlantaTimeElement.innerHTML = atlantaTime.format(
-    "h:mm:ss[<small>]A[</small>]"
-  );
-
   let tokyoElement = document.querySelector("#tokyo");
-  let tokyoDateElement = tokyoElement.querySelector(".date");
-  let tokyoTimeElement = tokyoElement.querySelector(".time");
+  if (tokyoElement) {
+    let tokyoDateElement = tokyoElement.querySelector(".date");
+    let tokyoTimeElement = tokyoElement.querySelector(".time");
 
-  let tokyoTime = moment().tz("Asia/Tokyo");
+    let tokyoTime = moment().tz("Asia/Tokyo");
 
-  tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
-  tokyoTimeElement.innerHTML = tokyoTime.format("h:mm:ss [<small>]A[</small>]");
+    tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
+    tokyoTimeElement.innerHTML = tokyoTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
 
   let cairoElement = document.querySelector("#cairo");
-  let cairoDateElement = cairoElement.querySelector(".date");
-  let cairoTimeElement = cairoElement.querySelector(".time");
+  if (cairoElement) {
+    let cairoDateElement = cairoElement.querySelector(".date");
+    let cairoTimeElement = cairoElement.querySelector(".time");
 
-  let cairoTime = moment().tz("Africa/Cairo");
+    let cairoTime = moment().tz("Africa/Cairo");
 
-  cairoDateElement.innerHTML = cairoTime.format("MMMM Do YYYY");
-  cairoTimeElement.innerHTML = cairoTime.format("h:mm:ss [<small>]A[</small>]");
+    cairoDateElement.innerHTML = cairoTime.format("MMMM Do YYYY");
+    cairoTimeElement.innerHTML = cairoTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+}
 
-  let parisElement = document.querySelector("#paris");
-
-  let parisDateElement = parisElement.querySelector(".date");
-  let parisTimeElement = parisElement.querySelector(".time");
-  let parisTime = moment().tz("Europe/Paris");
-
-  parisDateElement.innerHTML = parisTime.format("MMMM Do YYYY");
-  parisTimeElement.innerHTML = parisTime.format("h:mm:ss [<small>]A[</small>]");
+function updateCity(event) {
+  let cityTimeZone = event.target.value;
+  let cityName = cityTimeZone.replace("_", "").split("/")[1];
+  let cityTime = moment().tz(cityTimeZone);
+  let citiesElement = document.querySelector("#cities");
+  citiesElement.innerHTML = ` <div class="city">
+          <div>
+            <h2>${cityTimeZone}</h2>
+            <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
+            <div class="time">${cityTime.format(
+              "h:mm:ss"
+            )}<small>${cityTime.format("A")}</small></div></div>
+        </div>`;
 }
 
 updateTime();
 setInterval(updateTime, 1000);
+
+let citiesSelect = document.querySelector("#city");
+citiesSelect.addEventListener("change", updateCity);

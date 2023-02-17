@@ -12,40 +12,29 @@
   <body>
     <div class="container">
       <h1>World Clock</h1>
-      <select>
+      <select id="city">
         <option value="">Select a City</option>
-        <option value="atlanta">Atlanta</option>
-        <option value="tokyo">Tokyo</option>
-        <option value="cairo">Cairo</option>
-        <option value="paris">Paris</option>
+        <option value="EST">Atlanta</option>
+        <option value="Asia/Tokyo">Tokyo</option>
+        <option value="Africa/Cairo">Cairo</option>
+        <option value="Europe/Paris">Paris</option>
       </select>
-      <div class="cities">
-        <div>
-          <h2 class="atlanta" id="atlanta">Atlanta</h2>
-          <div class="date"></div>
+
+      <div id="cities">
+        <div class="city" id="tokyo">
+          <div>
+            <h2>Tokyo</h2>
+            <div class="date"></div>
+            <div class="time"></div>
+          </div>
         </div>
-        <div class="time"><small>PM</small></div>
-      </div>
-      <div class="cities">
-        <div>
-          <h2 class="tokyo" id="tokyo">Tokyo</h2>
-          <div class="date"></div>
+        <div class="city" id="cairo">
+          <div>
+            <h2>Cairo</h2>
+            <div class="date"></div>
+            <div class="time"></div>
+          </div>
         </div>
-        <div class="time"><small>PM</small></div>
-      </div>
-      <div class="cities">
-        <div>
-          <h2 class="cairo" id="cairo">Cairo</h2>
-          <div class="date"></div>
-        </div>
-        <div class="time"><small>PM</small></div>
-      </div>
-      <div class="cities">
-        <div>
-          <h2 class="paris" id="paris">Paris</h2>
-          <div class="date"></div>
-        </div>
-        <div class="time"><small>PM</small></div>
       </div>
     </div>
     <footer>
