@@ -8,7 +8,7 @@ function updateTime() {
 
     tokyoDateElement.innerHTML = tokyoTime.format("MMMM Do YYYY");
     tokyoTimeElement.innerHTML = tokyoTime.format(
-      "h:mm:ss [<small>]A[</small>]"
+      "h:mm:ss:SSS [<small>]A[</small>]"
     );
   }
 
@@ -21,7 +21,19 @@ function updateTime() {
 
     cairoDateElement.innerHTML = cairoTime.format("MMMM Do YYYY");
     cairoTimeElement.innerHTML = cairoTime.format(
-      "h:mm:ss [<small>]A[</small>]"
+      "h:mm:ss:SSS [<small>]A[</small>]"
+    );
+  }
+  let torontoElement = document.querySelector("#toronto");
+  if (torontoElement) {
+    let torontoDateElement = torontoElement.querySelector(".date");
+    let torontoTimeElement = torontoElement.querySelector(".time");
+
+    let torontoTime = moment().tz("America/Toronto");
+
+    torontoDateElement.innerHTML = torontoTime.format("MMMM Do YYYY");
+    torontoTimeElement.innerHTML = torontoTime.format(
+      "h:mm:ss:SSS [<small>]A[</small>]"
     );
   }
 }
@@ -41,8 +53,9 @@ function updateCity(event) {
             <div class="date">${cityTime.format("MMMM Do YYYY")}</div>
             </div>
             <div class="time">${cityTime.format(
-              "h:mm:ss"
+              "h:mm:ss:SSS"
             )}<small>${cityTime.format("A")}</small></div></div>
+            <a href="index.html"> All Cities</a>
         `;
 }
 
